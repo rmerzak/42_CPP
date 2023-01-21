@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 20:49:25 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/21 14:34:10 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/21 16:24:55 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <iostream>
 int main(int argc,char **argv) {
     if (argc == 2) {
-        Conversion c;
-        c.ft_parsing(argv[1]);
-        c.ft_conversion(argv[1]);
+        std::string str(argv[1]);
+        Conversion c(str);
+        c.ft_conversion();
     } else {
         std::cout << "nomber of argument: invalid";
     }

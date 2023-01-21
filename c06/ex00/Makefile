@@ -1,10 +1,10 @@
-NAME = a.out
+NAME = Convert
 
 CC = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILE = main.cpp
+FILE = main.cpp Conversion.cpp
 
 OBJ = $(FILE:%.cpp=%.o)
 

@@ -1,30 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conversion.hpp                                     :+:      :+:    :+:   */
+/*   Conversion.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:26:23 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/21 14:30:47 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/21 19:40:52 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
-
+#include <cmath>
 class Conversion
 {
 private:
-    /* data */
+    std::string str;
+    char c;
+    int i;
+    float f;
+    double d;
 public:
-    Conversion(/* args */);
+    Conversion();
+    Conversion(std::string _str);
     Conversion(const Conversion &D);
-    void ft_parsing(std::string str);
-    void ft_conversion(std::string str);
-    void ft_ToInt(std::string str);
-    void ft_Tochar(std::string str);
-    void ft_Tofloat(std::string str);
-    void ft_ToDouble(std::string str);
+    Conversion &operator=(const Conversion &D);
+    void ft_conversion();
+    //////////////////////////////////
+    void ft_ToInt();
+    void ft_Tochar();
+    void ft_Tofloat();
+    void ft_ToDouble();
+    ///////////////////////////////////
+    void ft_parsing(char *str);
+    //checks////////////////////////////
+    bool checkInt();
+    bool checkDouble();
+    bool checkChar();
+    bool checkFloat();
+    bool checkConst();
+    ////////////////////////////////////
     ~Conversion();
 };
 
