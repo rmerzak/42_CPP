@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conversion.hpp                                     :+:      :+:    :+:   */
+/*   Conversion.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:26:23 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/21 14:30:47 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/21 22:24:07 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 
+#include <cmath>
 class Conversion
 {
 private:
-    /* data */
+    std::string str;
 public:
-    Conversion(/* args */);
+    Conversion();
+    Conversion(std::string _str);
     Conversion(const Conversion &D);
-    void ft_parsing(std::string str);
-    void ft_conversion(std::string str);
-    void ft_ToInt(std::string str);
-    void ft_Tochar(std::string str);
-    void ft_Tofloat(std::string str);
-    void ft_ToDouble(std::string str);
+    Conversion &operator=(const Conversion &D);
+    void ft_conversion();
+    int ft_ToInt();
+    char ft_Tochar();
+    float ft_Tofloat();
+    double ft_ToDouble();
     ~Conversion();
 };
-

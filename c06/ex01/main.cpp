@@ -5,19 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 20:49:25 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/21 22:21:35 by rmerzak          ###   ########.fr       */
+/*   Created: 2023/01/22 14:54:35 by rmerzak           #+#    #+#             */
+/*   Updated: 2023/01/22 15:53:30 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Conversion.hpp"
+#include <stdint.h>
 #include <iostream>
-int main(int argc,char **argv) {
-    if (argc == 2) {
-        Conversion c(argv[1]);
-        c.ft_conversion();
-    } else {
-        std::cout << "nomber of argument: invalid";
-    }
-    return (1);
+
+struct Data {
+    int x;
+    int y;
+    char c;
+};
+
+
+uintptr_t serialize(Data* ptr){
+    return reinterpret_cast<uintptr_t>(ptr);
+}
+Data* deserialize(uintptr_t raw) {
+    return reinterpret_cast<Data*>(raw);
+}
+
+int main()  {
+    Data a;
+
+    a.x = 0;
+    a.y = 14;
+    a.c = 'A';
+    uintptr_t z = serialize(&a);
+    std::cout<< z << std::endl;
+    Data *k = deserialize(z);
+    std::cout<< k->c << " " << k->x << " " << k->y << std::endl;
+
 }

@@ -1,10 +1,10 @@
-NAME = Convert
+NAME = Serialize
 
 CC = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILE = main.cpp Conversion.cpp
+FILE = main.cpp Data.cpp
 
 OBJ = $(FILE:%.cpp=%.o)
 
