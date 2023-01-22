@@ -6,16 +6,19 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:08:53 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/22 17:09:03 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/22 18:26:00 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef BASE_HPP
+#define BASE_HPP
 class Base
 {
 private:
     /* data */
 public:
     Base(/* args */);
-    ~Base();
+    virtual ~Base();
 };
 
+#endif

@@ -6,11 +6,15 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:09:36 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/22 17:09:58 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/22 18:29:22 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-class C
+
+#ifndef C_HPP
+#define C_HPP
+#include "Base.hpp"
+class C:public Base
 {
 private:
     /* data */
@@ -18,4 +22,5 @@ public:
     C(/* args */);
     ~C();
 };
+#endif
 
