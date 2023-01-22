@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:26:26 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/21 22:38:53 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/22 15:59:08 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ Conversion::Conversion(std::string _str)
     this->str = _str;
 }
 
-Conversion::Conversion(/* args */) {}
+Conversion::Conversion()
+{
+}
 
 Conversion::Conversion(const Conversion &D) {
     *this = D;
@@ -43,7 +45,7 @@ char Conversion::ft_Tochar() {
 }
 
 float Conversion::ft_Tofloat() {
-    return std::stof(this->str.c_str());
+    return atof(this->str.c_str());
 }
 
 Conversion::~Conversion()
@@ -65,11 +67,11 @@ void Conversion::ft_conversion() {
 	}
 
 	if (vint < INT_MIN || vint > INT_MAX || isnan(vfloat)) {
-		std::cout << "int: " << vint << std::endl;
-
+		std::cout << "int: impossible" << std::endl;
 	} else {
 		std::cout << "int: " << vint << std::endl;
 	}
+
 
 	if (vfloat - vint == 0) {
 		std::cout << "float: " << vfloat << ".0f" << std::endl;
@@ -79,4 +81,3 @@ void Conversion::ft_conversion() {
 		std::cout << "double: " << vdouble << std::endl;
 	}
 }
-
