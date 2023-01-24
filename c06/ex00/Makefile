@@ -12,10 +12,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CXXFLAGS) $(OBJ) -o $(NAME)
-	rm *.o
 
 clean:
-	rm -rf $(OBJ) 
+	rm -rf $(OBJ)
 
 fclean:
 	rm -rf $(OBJ) $(NAME)
