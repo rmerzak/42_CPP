@@ -6,6 +6,8 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 FILE = main.cpp
 
+INC = Array.hpp
+
 OBJ = $(FILE:%.cpp=%.o)
 
 all: $(NAME)

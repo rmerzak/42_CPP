@@ -6,18 +6,19 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:52:40 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/24 23:23:05 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/26 17:13:39 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <iostream>
+#include <cstdlib>
 #include "Array.hpp"
 
 #define MAX_VAL 750
 int main(int, char**)
 {
-    Array<int> numbers(MAX_VAL);
+   /* Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
     for (int i = 0; i < MAX_VAL; i++)
@@ -61,6 +62,29 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
-    delete [] mirror;//
+   delete [] mirror;//
+   */
+/**/
+   unsigned int size = 23;
+    Array<int> numbers(size);
+    for(unsigned int i = 0; i < size; i++)
+        numbers[i] = i;
+
+    try {
+        for (unsigned int i = 0; i < size; i++)
+            std::cout << numbers[i] << ", ";
+        std::cout << "\n";
+    }
+    catch(std::exception &e){
+        std::cout << e.what() << std::endl;
+    }
+    try
+    {
+        std::cout << numbers[50] << "\n";
+    }
+    catch(std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
     return 0;
 }
