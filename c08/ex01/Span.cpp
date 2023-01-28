@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:36:38 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/27 22:32:23 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/28 16:55:28 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,8 @@ int Span::shortestSpan() {
     }
 
     return min_span;
+}
+
+unsigned int Span::getSize(void) {
+    return this->size;
 }

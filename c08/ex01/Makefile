@@ -1,4 +1,4 @@
-NAME = Easyfind
+NAME = Span
 
 CC = c++
 
