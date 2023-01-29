@@ -6,11 +6,12 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:36:38 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/29 17:02:48 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/29 17:32:46 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <algorithm>
 
 Span::Span(unsigned int size)
 {
@@ -40,18 +41,11 @@ void Span::addNumber(int i) {
         throw Span::OutOfSize();
 }
 
-int Span::longestSpan() { //// error
+int Span::longestSpan() {
     if (v.size() < 2)
         throw Span::OutOfElements();
-    int min_elem = INT_MAX, max_elem = INT_MIN;
-    for (unsigned int i = 0; i < v.size(); i++) {
-        if (v[i] < min_elem) {
-            min_elem = v[i];
-        }
-        if (v[i] > max_elem) {
-            max_elem = v[i];
-        }
-    }
+    int max_elem = *std::max_element(this->v.begin(), this->v.end());
+    int min_elem = *std::min_element(this->v.begin(), this->v.end());
     return max_elem - min_elem;
 }
 
