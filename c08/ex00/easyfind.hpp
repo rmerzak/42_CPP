@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 19:00:52 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/27 19:35:45 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/29 17:06:53 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@
 #include <iterator>
 
 template <typename T, typename H>
-typename T::iterator easyfind(T container, H k) {
-    for (typename T::iterator i = container.begin(); i != container.end(); i++) {
+typename T::const_iterator easyfind(T const &container, H k) {
+    for (typename T::const_iterator i = container.begin(); i != container.end(); i++) { //// here
         if (k == *i) {
-            //std::cout << "found it "<< *i << std::endl;
             return i;
         }
     }

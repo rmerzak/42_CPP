@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:36:38 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/28 16:55:28 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/29 17:02:48 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 Span::Span(unsigned int size)
 {
-    this->size = size;
+    v.reserve(size);
 }
 
 
-Span::Span(const Span &D):size(D.size), v(D.v) {
+Span::Span(const Span &D):v(D.v) {
 }
 
 Span &Span::operator=(const Span &D) {
     if (this != &D) {
-        size = D.size;
         v = D.v;
     }
     return *this;
@@ -34,14 +33,14 @@ Span::~Span()
 }
 
 void Span::addNumber(int i) {
-    if(v.size() <= this->size)
+    if(v.size() < v.capacity())
     {
         v.push_back(i);
     } else
         throw Span::OutOfSize();
 }
 
-int Span::longestSpan() {
+int Span::longestSpan() { //// error
     if (v.size() < 2)
         throw Span::OutOfElements();
     int min_elem = INT_MAX, max_elem = INT_MIN;
@@ -68,10 +67,20 @@ int Span::shortestSpan() {
             min_span = current_span;
         }
     }
-
     return min_span;
 }
 
-unsigned int Span::getSize(void) {
-    return this->size;
+
+int & Span::operator[](unsigned int i) {return this->v[i];};
+const int & Span::operator[](unsigned int i) const {return this->v[i];};
+
+void Span::addNumbers(std::vector<int>::iterator first, std::vector<int>::iterator last) {
+    while (first != last) {
+        addNumber(*first);
+        ++first;
+    }
+}
+
+unsigned int Span::size(void) {
+    return this->v.size();
 }
