@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 19:00:55 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/29 17:33:31 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/29 17:42:03 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int main()
     vect.push_back(0);
     vect.push_back(6);
     vect.push_back(6);
-    vect.push_back(3);
+    vect.push_back(88);
     try
     {
         /* code */
-        std::cout << *easyfind(vect, 3)<<std::endl;
+        std::cout << *easyfind(vect, 88)<<std::endl;
     }
     catch(const std::exception& e)
     {
