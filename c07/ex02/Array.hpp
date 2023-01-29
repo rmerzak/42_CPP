@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 22:52:43 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/01/26 17:22:19 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/01/28 21:48:39 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Array {
   ~Array() {
     delete [] this->data;
   };
-   Array(const Array<T> &d) : data(new T[d.d_size]), d_size(d.d_size) {
+   Array(const Array &d) : data(new T[d.d_size]), d_size(d.d_size) {
         for (unsigned int i = 0; i < d_size; ++i) {
             this->data[i] = d.data[i];
         }
