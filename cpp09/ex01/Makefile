@@ -1,10 +1,10 @@
-NAME = btc
+NAME = RPN
 
 CC = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILE = main.cpp Includes/BitcoinExchange.hpp Implts/BitcoinExchange.cpp
+FILE = main.cpp RPN.cpp
 
 OBJ = $(FILE:%.cpp=%.o)
 
