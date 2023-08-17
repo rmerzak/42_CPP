@@ -2,8 +2,7 @@ NAME = PmergeMe
 
 CC = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 FILE = main.cpp PmergeMe.cpp
 
 OBJ = $(FILE:%.cpp=%.o)
