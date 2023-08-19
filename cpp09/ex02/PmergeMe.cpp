@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:04:26 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/08/17 17:22:23 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/08/19 14:08:22 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ PmergeMe::PmergeMe(char **argv)
         Pmerge.push_back(num);
         deq.push_back(num);
     }
+    for(size_t i = 0; i < Pmerge.size(); i++) {
+        std::cout << Pmerge[i] << " ";
+    }
+    std::cout << std::endl;
     this->merge_insertion_sort(Pmerge);
-    this->merge_insertion_sort_deque(deq);
+    // this->merge_insertion_sort_deque(deq);
 }
 
 PmergeMe::~PmergeMe() {
@@ -231,7 +235,6 @@ std::vector<int> PmergeMe::build_jacob_insertion_sequence(int array_len)
     end_sequence.push_back(jacobsthal_memoized(jacob_index));
     return end_sequence;
 }
-
 void PmergeMe::sort_by_larger_value(std::vector<std::pair<int, int> > &sorted_split_array)
 {
     insertion_sort_pairs(sorted_split_array, sorted_split_array.size() - 1);
@@ -287,9 +290,18 @@ std::vector<int> PmergeMe::create_s(const std::vector<std::pair<int, int> > &sor
         S.push_back(sorted_split_array[i].second);
         pend.push_back(sorted_split_array[i].first);
     }
-
+    std::cout << "pend " << std::endl;
+    for(size_t i = 0; i < pend.size(); i++) {
+        std::cout  << pend[i] << " ";
+    }
+    std::cout << std::endl;
+    std::cout << std::endl;
     S.insert(S.begin(), pend[0]);
-
+    std::cout << "S " << std::endl;
+    for(size_t i = 0; i < S.size(); i++) {
+        std::cout << S[i] << " ";
+    }
+    std::cout << std::endl;
     std::vector<int> indexSequence;
     std::string last = "default";
 
@@ -373,9 +385,23 @@ std::vector<int> PmergeMe::merge_insertion_sort(const std::vector<int> &A)
         straggler = A[A.size() - 1];
     }
     std::vector<std::pair<int, int> > split_array = create_pairs(A);
+    //print split array
+    for(size_t i = 0; i < split_array.size(); i++) {
+        std::cout << "splited array " <<split_array[i].first << " " << split_array[i].second << std::endl;
+    }
     std::vector<std::pair<int, int> > sorted_split_array = sort_each_pair(split_array);
+    for(size_t i = 0; i < sorted_split_array.size(); i++) {
+        std::cout <<"sorted splited array " << sorted_split_array[i].first << " " << sorted_split_array[i].second << std::endl;
+    }
     sort_by_larger_value(sorted_split_array);
+    for(size_t i = 0; i < sorted_split_array.size(); i++) {
+        std::cout << "sorted h " <<sorted_split_array[i].first << " " << sorted_split_array[i].second << std::endl;
+    }
     std::vector<int> S = create_s(sorted_split_array, straggler);
+    for(size_t i = 0; i < S.size(); i++) {
+        std::cout << S[i] << " ";
+    }
+    std::cout << std::endl;
     ///check is sorted
     std::cout << "is sorted vector? " << std::is_sorted(S.begin(), S.end()) << std::endl;
     end = clock();
