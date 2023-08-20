@@ -6,14 +6,13 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:22:08 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/08/19 18:02:41 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/08/20 18:37:54 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <cstdlib>
 #include <iostream>     // std::cout
-#include <algorithm>    // std::lower_bound, std::upper_bound, std::sort
 #include <vector>      // std::vector
 
 BitcoinExchange::BitcoinExchange(void) {
@@ -81,6 +80,14 @@ bool isValidDate(const std::string& str) {
     std::istringstream iss(str);
     int year, month, day;
     char separator;
+    if (str.length() != 10)
+        return false;
+    if (str[4] != '-' || str[7] != '-')
+        return false;
+    for (size_t i = 0; i < str.length(); i++) {
+        if (i != 4 && i != 7 && !std::isdigit(str[i]))
+            return false;
+    }
     iss >> year >> separator >> month >> separator >> day;
     if (separator == '-' && month >= 1 && month <= 12 && day >= 1 && day <= 31) {
         if (month == 2) {
@@ -141,6 +148,9 @@ void BitcoinExchange::processInputFile(const std::string& filename) {
             }
             std::map<std::string, double>::iterator it;
             it = pricesbydate.lower_bound(date);
+            if (it == pricesbydate.end()) {
+                it--;
+            }
             double val = it->second;
             calc = val * atof(value.c_str());
             std::cout << date << " => " << value << " = " << calc << std::endl;

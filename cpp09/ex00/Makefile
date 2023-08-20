@@ -2,7 +2,7 @@ NAME = btc
 
 CC = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11
 
 FILE = main.cpp BitcoinExchange.cpp
 
