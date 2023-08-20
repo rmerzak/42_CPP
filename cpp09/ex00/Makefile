@@ -4,7 +4,7 @@ CC = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-FILE = main.cpp Implts/BitcoinExchange.cpp
+FILE = main.cpp BitcoinExchange.cpp
 
 OBJ = $(FILE:%.cpp=%.o)
 

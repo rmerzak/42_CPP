@@ -6,11 +6,11 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:22:08 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/08/08 15:15:28 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/08/19 18:02:41 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/BitcoinExchange.hpp"
+#include "BitcoinExchange.hpp"
 #include <cstdlib>
 #include <iostream>     // std::cout
 #include <algorithm>    // std::lower_bound, std::upper_bound, std::sort
@@ -27,14 +27,18 @@ BitcoinExchange::~BitcoinExchange() {
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &src) {
     *this = src;
 }
+
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs) {
-    if (this != &rhs) {
-        this->pricesbydate = rhs.pricesbydate;
+    if (this == &rhs) {
+        return *this;
     }
+
+    _filename = rhs._filename;
+    pricesbydate = rhs.pricesbydate;
     return *this;
 }
 void BitcoinExchange::readFromFileAndFillMap() {
-    std::ifstream file("assets/data.csv");
+    std::ifstream file("data.csv");
     std::string line;
     std::string date;
     std::string price;
@@ -106,6 +110,10 @@ void BitcoinExchange::processInputFile(const std::string& filename) {
     std::string delimiter = "|";
     size_t pos = 0;
     getline(file, line);
+    if(line != "date | value") {
+        std::cout << "Error, Header file"<< filename <<std::endl;
+        return ;
+    }
     while (getline(file, line)) {
         pos = line.find(delimiter);
         date = line.substr(0, pos);

@@ -6,12 +6,12 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:32:14 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/07/17 16:08:51 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/08/18 16:26:39 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "Includes/BitcoinExchange.hpp"
+#include "BitcoinExchange.hpp"
 
 int main(int argc, char **argv) {
     if (argc != 2) {

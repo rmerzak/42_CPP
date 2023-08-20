@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 19:50:50 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/08/07 15:34:24 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/08/19 18:02:50 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@
 #include <map>
 class BitcoinExchange {
     private:
-        const std::string _filename;
+        std::string _filename;
         std::map<std::string, double> pricesbydate;
     public:
-        void readFromFileAndFillMap();
-        void printPricesByDate();
-        void checkFormatDate(std::string date);
-        void processInputFile(const std::string& filename);
-        void startPrincing();
         BitcoinExchange(void);
         BitcoinExchange(std::string filename);
         ~BitcoinExchange();
         BitcoinExchange(const BitcoinExchange &src);
         BitcoinExchange &operator=(const BitcoinExchange &rhs);
+        void readFromFileAndFillMap();
+        void printPricesByDate();
+        void checkFormatDate(std::string date);
+        void processInputFile(const std::string& filename);
+        void startPrincing();
         bool checkValue(const std::string& value);
 };
 
