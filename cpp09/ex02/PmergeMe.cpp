@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:04:26 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/08/19 14:08:22 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/08/19 17:00:29 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,37 +122,6 @@ std::vector<std::pair<int, int> > PmergeMe::sort_each_pair(const std::vector<std
 
     return sorted_split_array;
 }
-
-void PmergeMe::insert(std::pair<int, int> element, std::vector<std::pair<int, int> > &A, int n)
-{
-    if (n < 0)
-    {
-        A[0] = element;
-    }
-    else if (element.second >= A[n].second)
-    {
-        if (n == static_cast<int>(A.size()) - 1)
-        {
-            A.push_back(element);
-        }
-        else
-        {
-            A[n + 1] = element;
-        }
-    }
-    else
-    {
-        if (n == static_cast<int>(A.size()) - 1)
-        {
-            A.push_back(A[n]);
-        }
-        else
-        {
-            A[n + 1] = A[n];
-            insert(element, A, n - 1);
-        }
-    }
-}
 void PmergeMe::insert_deque(std::pair<int, int> element, std::deque<std::pair<int, int> > &A, int n)
 {
     if (n < 0)
@@ -183,6 +152,36 @@ void PmergeMe::insert_deque(std::pair<int, int> element, std::deque<std::pair<in
         }
     }
 }
+void PmergeMe::insert(std::pair<int, int> element, std::vector<std::pair<int, int> > &A, int n)
+{
+    if (n < 0)
+    {
+        A[0] = element;
+    }
+    else if (element.second >= A[n].second)
+    {
+        if (n == static_cast<int>(A.size()) - 1)
+        {
+            A.push_back(element);
+        }
+        else
+        {
+            A[n + 1] = element;
+        }
+    }
+    else
+    {
+        if (n == static_cast<int>(A.size()) - 1)
+        {
+            A.push_back(A[n]);
+        }
+        else
+        {
+            A[n + 1] = A[n];
+            insert(element, A, n - 1);
+        }
+    }
+}
 void PmergeMe::insertion_sort_pairs(std::vector<std::pair<int, int> > &A, int n)
 {
     if (n < 1)
@@ -191,10 +190,23 @@ void PmergeMe::insertion_sort_pairs(std::vector<std::pair<int, int> > &A, int n)
     }
     else
     {
+        std::cout << "n " << n << std::endl;
         insertion_sort_pairs(A, n - 1);
         insert(A[n], A, n - 1);
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
 
 void PmergeMe::insertion_sort_pairs_deque(std::deque<std::pair<int, int> > &A, int n)
 {
