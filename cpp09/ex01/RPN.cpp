@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 16:41:42 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/08/19 18:22:43 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/08/20 20:59:38 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ int RPN::evaluate(const char* expression) {
                 }
                 int b = stack.top();
                 stack.pop();
+            //     if (expression[i] == '/' && b == 0) {
+            //     std::cout << "Error" << std::endl;
+            //     return -1;
+            // }
                 int a = stack.top();
                 stack.pop();
                 stack.push(perform_operation(a, b, expression[i]));

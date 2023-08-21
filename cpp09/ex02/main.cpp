@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:04:32 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/08/16 18:35:48 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/08/20 21:38:55 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int main(int argc, char **argv) {
         return 1;
     }
     PmergeMe pmergeMe(argv);
+    pmergeMe.mergeInsertion();
     return 0;
 }

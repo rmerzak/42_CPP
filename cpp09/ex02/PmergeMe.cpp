@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:04:26 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/08/19 17:00:29 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/08/21 14:48:04 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,12 @@ PmergeMe::PmergeMe(char **argv)
         Pmerge.push_back(num);
         deq.push_back(num);
     }
-    for(size_t i = 0; i < Pmerge.size(); i++) {
-        std::cout << Pmerge[i] << " ";
-    }
-    std::cout << std::endl;
-    this->merge_insertion_sort(Pmerge);
-    // this->merge_insertion_sort_deque(deq);
 }
 
 PmergeMe::~PmergeMe() {
 }
+
+
 
 
 long PmergeMe::ft_atoi(const char *str)
@@ -190,22 +186,10 @@ void PmergeMe::insertion_sort_pairs(std::vector<std::pair<int, int> > &A, int n)
     }
     else
     {
-        std::cout << "n " << n << std::endl;
         insertion_sort_pairs(A, n - 1);
         insert(A[n], A, n - 1);
     }
 };
-
-
-
-
-
-
-
-
-
-
-
 
 
 void PmergeMe::insertion_sort_pairs_deque(std::deque<std::pair<int, int> > &A, int n)
@@ -302,20 +286,8 @@ std::vector<int> PmergeMe::create_s(const std::vector<std::pair<int, int> > &sor
         S.push_back(sorted_split_array[i].second);
         pend.push_back(sorted_split_array[i].first);
     }
-    std::cout << "pend " << std::endl;
-    for(size_t i = 0; i < pend.size(); i++) {
-        std::cout  << pend[i] << " ";
-    }
-    std::cout << std::endl;
-    std::cout << std::endl;
     S.insert(S.begin(), pend[0]);
-    std::cout << "S " << std::endl;
-    for(size_t i = 0; i < S.size(); i++) {
-        std::cout << S[i] << " ";
-    }
-    std::cout << std::endl;
     std::vector<int> indexSequence;
-    std::string last = "default";
 
     std::vector<int> jacob_insertion_sequence = build_jacob_insertion_sequence(pend.size());
     int jacob_idx, lastindex = 1;
@@ -397,32 +369,15 @@ std::vector<int> PmergeMe::merge_insertion_sort(const std::vector<int> &A)
         straggler = A[A.size() - 1];
     }
     std::vector<std::pair<int, int> > split_array = create_pairs(A);
-    //print split array
-    for(size_t i = 0; i < split_array.size(); i++) {
-        std::cout << "splited array " <<split_array[i].first << " " << split_array[i].second << std::endl;
-    }
     std::vector<std::pair<int, int> > sorted_split_array = sort_each_pair(split_array);
-    for(size_t i = 0; i < sorted_split_array.size(); i++) {
-        std::cout <<"sorted splited array " << sorted_split_array[i].first << " " << sorted_split_array[i].second << std::endl;
-    }
     sort_by_larger_value(sorted_split_array);
-    for(size_t i = 0; i < sorted_split_array.size(); i++) {
-        std::cout << "sorted h " <<sorted_split_array[i].first << " " << sorted_split_array[i].second << std::endl;
-    }
     std::vector<int> S = create_s(sorted_split_array, straggler);
-    for(size_t i = 0; i < S.size(); i++) {
-        std::cout << S[i] << " ";
-    }
-    std::cout << std::endl;
     ///check is sorted
-    std::cout << "is sorted vector? " << std::is_sorted(S.begin(), S.end()) << std::endl;
     end = clock();
     double T = static_cast<double>(end - start) / CLOCKS_PER_SEC;
     std::cout<< std::fixed << std::setprecision(5) <<"Time to process a range of " << this->Pmerge.size() << " elements with std::vector : "<<T<<" us"<< std::endl;
     return S;
 }
-
-
 
 /////////////////////////////////////////////////////
 
@@ -442,11 +397,9 @@ std::deque<int> PmergeMe::merge_insertion_sort_deque(const std::deque<int> &A)
     std::deque<std::pair<int, int> > sorted_split_array = sort_each_pair_deque(split_array);
     sort_by_larger_value_deque(sorted_split_array);
     std::deque<int> S = create_s_deque(sorted_split_array, straggler);
-        std::cout << "is sorted deque? " << std::is_sorted(S.begin(), S.end()) << std::endl;
-
     end = clock();
     double T = static_cast<double>(end - start) / CLOCKS_PER_SEC;
-     std::cout<< std::fixed << std::setprecision(5) <<"Time to process a range of " << this->deq.size() << " elements with std::deque : "<<T<<" us"<< std::endl;
+    std::cout<< std::fixed << std::setprecision(5) <<"Time to process a range of " << this->deq.size() << " elements with std::deque : "<<T<<" us"<< std::endl;
     return S;
 }
 
@@ -471,6 +424,88 @@ std::deque<std::pair<int, int> > PmergeMe::create_pairs_deque(const std::deque<i
     }
 
     return split_array;
+}
+std::vector<int> PmergeMe::getPmerge(void) {
+    return this->Pmerge;
+}
+void PmergeMe::setPmerge(std::vector<int> merge) {
+    this->Pmerge.clear();
+    for(size_t i = 0; i < merge.size(); i++) {
+        this->Pmerge.push_back(merge[i]);
+    }
+}
+std::deque<int> PmergeMe::getDeq(void) {
+    return this->deq;
+}
+void PmergeMe::setDeq(std::deque<int> q) {
+    this->deq.clear();
+    for(size_t i = 0; i < q.size(); i++) {
+        this->deq.push_back(q[i]);
+    }
+}
+PmergeMe::PmergeMe(const PmergeMe &a) {
+    this->Pmerge.clear();
+    for (size_t i = 0; i < a.Pmerge.size(); i++) {
+        this->Pmerge.push_back(a.Pmerge[i]);
+    }
+
+    this->deq.clear();
+    for (size_t i = 0; i < a.deq.size(); i++) {
+        this->deq.push_back(a.deq[i]);
+    }
+}
+
+PmergeMe& PmergeMe::operator=(const PmergeMe &a) {
+    if (this != &a) { // Check for self-assignment
+        this->Pmerge.clear();
+        for (size_t i = 0; i < a.Pmerge.size(); i++) {
+            this->Pmerge.push_back(a.Pmerge[i]);
+        }
+
+        this->deq.clear();
+        for (size_t i = 0; i < a.deq.size(); i++) {
+            this->deq.push_back(a.deq[i]);
+        }
+    }
+    return *this;
+}
+
+void PmergeMe::mergeInsertion(void) {
+    std::cout << "Before: ";
+    for(size_t i = 0; i < this->Pmerge.size(); i++) {
+        std::cout << this->Pmerge[i] << " ";
+    }
+    std::cout << std::endl;
+    clock_t start1, end1;
+    start1 = clock();
+    bool hasStraggler = this->Pmerge.size() % 2 != 0;
+    int straggler = -1;
+
+    if (hasStraggler)
+    {
+        straggler = this->Pmerge[this->Pmerge.size() - 1];
+    }
+    std::vector<std::pair<int, int> > split_array_v = create_pairs(this->Pmerge);
+    std::vector<std::pair<int, int> > sorted_split_array_v = sort_each_pair(split_array_v);
+    sort_by_larger_value(sorted_split_array_v);
+    std::vector<int> vec = create_s(sorted_split_array_v, straggler);
+    end1 = clock();
+    double T1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC;
+    std::cout << "After: ";
+    for(size_t i = 0; i < vec.size(); i++) {
+        std::cout << vec[i] << " ";
+    }
+    std::cout << std::endl;
+    std::cout<< std::fixed << std::setprecision(5) <<"Time to process a range of " << this->Pmerge.size() << " elements with std::vector : "<<T1<<" us"<< std::endl;
+    clock_t start2, end2;
+    start2 = clock();
+    std::deque<std::pair<int, int> > split_array = create_pairs_deque(this->deq);
+    std::deque<std::pair<int, int> > sorted_split_array = sort_each_pair_deque(split_array);
+    sort_by_larger_value_deque(sorted_split_array);
+    std::deque<int> deque = create_s_deque(sorted_split_array, straggler);
+    end2 = clock();
+    double T2 = static_cast<double>(end2 - start2) / CLOCKS_PER_SEC;
+    std::cout<< std::fixed << std::setprecision(5) <<"Time to process a range of " << this->deq.size() << " elements with std::deque : "<<T2<<" us"<< std::endl;
 }
 
 

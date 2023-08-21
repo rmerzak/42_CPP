@@ -6,7 +6,7 @@
 /*   By: rmerzak <rmerzak@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 16:04:29 by rmerzak           #+#    #+#             */
-/*   Updated: 2023/08/17 16:20:49 by rmerzak          ###   ########.fr       */
+/*   Updated: 2023/08/21 14:45:06 by rmerzak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ std::deque<int> deq;
 public:
     PmergeMe(char **argv);
     ~PmergeMe();
+    PmergeMe(const PmergeMe &a);
+    PmergeMe &operator=(const PmergeMe &a);
+    void setPmerge(std::vector<int> Pmerge);
+    void setDeq(std::deque<int> deq);
+    std::vector<int> getPmerge(void);
+    std::deque<int> getDeq(void);
     bool Parsenumbers(const std::string& value);
     long ft_atoi(const char *str);
     std::vector<int> merge_insertion_sort(const std::vector<int> &A);
@@ -42,4 +48,6 @@ public:
     void insert_deque(std::pair<int, int> element, std::deque<std::pair<int, int> > &A, int n);
     std::deque<std::pair<int, int> > sort_each_pair_deque(const std::deque<std::pair<int, int> > &split_array);
     std::deque<std::pair<int, int> > create_pairs_deque(const std::deque<int> &a);
+    //////////////////////////////////
+    void mergeInsertion(void);
 };
